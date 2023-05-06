@@ -3,27 +3,12 @@ import FavoriteList from '../../components/favorite-list/favorite-list';
 import Logo from '../../components/logo/logo';
 import Navigation from '../../components/navigation/navigation';
 import { getFavoriteOffersListCopy } from '../../store/offers-data/offers-data-selectors';
-import { useAppDispatch, useAppSelector } from '../../store';
+import { useAppSelector } from '../../store';
 import FavoriteListEmpty from '../../components/favorite-list-empty/favorite-list-empty';
-import { useEffect } from 'react';
-import { AuthorizationStatus } from '../../const';
-import { getAuthorizationStatus } from '../../store/user-process/user-process-selectors';
-import { fetchFavoritesAction, fetchUserDataAction } from '../../store/api-action';
-
 
 function FavoritesScreen() {
 
   const favoritesList = useAppSelector(getFavoriteOffersListCopy);
-  const authStatus = useAppSelector(getAuthorizationStatus);
-
-  const dispatch = useAppDispatch();
-
-  useEffect(() => {
-    if (authStatus === AuthorizationStatus.Auth) {
-      dispatch(fetchFavoritesAction());
-      dispatch(fetchUserDataAction());
-    }
-  }, [authStatus, dispatch]);
 
   return (
     <div className="page">
