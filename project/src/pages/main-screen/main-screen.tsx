@@ -10,7 +10,6 @@ import CitiesBoard from '../../components/cities-board/cities-board';
 function MainScreen(): JSX.Element {
 
   const offersList = useAppSelector(getOffersListCopy);
-  // const authStatus = useAppSelector(getAuthorizationStatus);
   const isLoading = useAppSelector(getIsLoadingOffersStatus);
 
   const isOffers = offersList.length >= 1;

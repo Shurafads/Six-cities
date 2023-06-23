@@ -54,6 +54,7 @@ const fetchOfferAction = createAsyncThunk<Offer, number, {
 }>(
   'data/fetchOffer',
   async (offerId, {extra: api}) => {
+
     const {data} = await api.get<Offer>(`/hotels/${offerId}`);
 
     return data;
